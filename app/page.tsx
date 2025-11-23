@@ -126,15 +126,15 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-teal-50">
+    <div className="flex min-h-screen flex-col bg-[#f5f5f7]">
       {/* Header */}
-      <header className="border-b border-blue-100 bg-white/80 backdrop-blur-sm shadow-sm">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-10 border-b border-gray-200/60 bg-white/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3">
             {/* Dental Logo */}
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-teal-500 shadow-lg">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#5b7c99] shadow-sm">
               <svg
-                className="h-7 w-7 text-white"
+                className="h-6 w-6 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -148,17 +148,17 @@ export default function Home() {
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-800">
+              <h1 className="text-xl font-semibold tracking-tight text-gray-900">
                 Dental Care Assistant
               </h1>
               <p className="text-sm text-gray-500">
-                Your friendly dental practice helper
+                Professional dental support
               </p>
             </div>
           </div>
           <button
             onClick={handleNewChat}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95"
+            className="flex items-center gap-2 rounded-lg bg-[#5b7c99] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#4d6a82] active:scale-98"
           >
             <svg
               className="h-4 w-4"
@@ -181,7 +181,7 @@ export default function Home() {
       {/* Chat Container */}
       <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-6">
         {/* Messages Area */}
-        <div className="mb-4 flex-1 overflow-y-auto rounded-2xl bg-white p-6 shadow-lg">
+        <div className="mb-4 flex-1 overflow-y-auto rounded-xl bg-white/70 p-6 shadow-sm backdrop-blur-sm">
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -191,10 +191,10 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-2xl px-5 py-3 shadow-sm ${
+                  className={`max-w-[80%] rounded-xl px-4 py-3 ${
                     message.sender === "user"
-                      ? "bg-gradient-to-r from-blue-500 to-teal-500 text-white"
-                      : "bg-gray-100 text-gray-800"
+                      ? "bg-[#5b7c99] text-white shadow-sm"
+                      : "bg-[#e8eaed] text-gray-900"
                   }`}
                 >
                   <div className="text-sm leading-relaxed">
@@ -202,7 +202,7 @@ export default function Home() {
                       <ReactMarkdown
                         components={{
                           h3: ({ children }) => (
-                            <h3 className="font-bold text-base text-gray-900 mb-2 mt-1 first:mt-0">
+                            <h3 className="font-semibold text-base text-gray-900 mb-2 mt-1 first:mt-0">
                               {children}
                             </h3>
                           ),
@@ -212,7 +212,7 @@ export default function Home() {
                             </p>
                           ),
                           strong: ({ children }) => (
-                            <strong className="font-bold text-gray-900">
+                            <strong className="font-semibold text-gray-900">
                               {children}
                             </strong>
                           ),
@@ -227,7 +227,7 @@ export default function Home() {
                             </li>
                           ),
                           code: ({ children }) => (
-                            <code className="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">
+                            <code className="bg-gray-300/50 px-1.5 py-0.5 rounded text-xs font-mono">
                               {children}
                             </code>
                           ),
@@ -240,9 +240,9 @@ export default function Home() {
                     )}
                   </div>
                   <p
-                    className={`mt-1 text-xs ${
+                    className={`mt-1.5 text-xs ${
                       message.sender === "user"
-                        ? "text-blue-100"
+                        ? "text-white/70"
                         : "text-gray-500"
                     }`}
                   >
@@ -256,11 +256,11 @@ export default function Home() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] rounded-2xl bg-gray-100 px-5 py-3 shadow-sm">
+                <div className="max-w-[80%] rounded-xl bg-[#e8eaed] px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.3s]"></div>
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.15s]"></div>
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500 [animation-delay:-0.3s]"></div>
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500 [animation-delay:-0.15s]"></div>
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-500"></div>
                   </div>
                 </div>
               </div>
@@ -270,22 +270,22 @@ export default function Home() {
         </div>
 
         {/* Input Area */}
-        <form onSubmit={handleSubmit} className="flex gap-3">
+        <form onSubmit={handleSubmit} className="sticky bottom-0 flex gap-3 bg-[#f5f5f7] py-2">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Ask about appointments, services, or dental care..."
-            className="flex-1 rounded-full border border-gray-300 bg-white px-6 py-4 text-gray-800 placeholder-gray-400 shadow-md transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+            className="flex-1 rounded-lg border border-gray-300/60 bg-white/90 px-5 py-3.5 text-gray-900 placeholder-gray-500 shadow-sm backdrop-blur-sm transition-all focus:border-[#5b7c99] focus:outline-none focus:ring-2 focus:ring-[#5b7c99]/20"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !inputValue.trim()}
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-teal-500 text-white shadow-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="flex h-[52px] w-[52px] items-center justify-center rounded-lg bg-[#5b7c99] text-white shadow-sm transition-all hover:bg-[#4d6a82] active:scale-98 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#5b7c99]"
           >
             <svg
-              className="h-6 w-6"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -302,10 +302,10 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-blue-100 bg-white/80 backdrop-blur-sm py-4">
+      <footer className="border-t border-gray-200/60 bg-white/90 backdrop-blur-md py-4">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm text-gray-500">
-            Session ID: <span className="font-mono text-xs">{sessionId}</span>
+          <p className="text-xs text-gray-500">
+            Session ID: <span className="font-mono text-[10px] text-gray-400">{sessionId}</span>
           </p>
         </div>
       </footer>
